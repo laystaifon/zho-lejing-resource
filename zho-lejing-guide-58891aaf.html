@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐竞体育 · 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9fc;
+            color: #1a2c38;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 头部区域（产品摘要） */
+        .hero {
+            background: linear-gradient(145deg, #e0f0f5 0%, #cbe4ed 100%);
+            border-radius: 32px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,40,50,0.06);
+            border-left: 6px solid #1f8a9e;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b3b44;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #1f4f5c;
+            max-width: 680px;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #1f8a9e20;
+            color: #126b7a;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* 网格卡片体系 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 4px 12px rgba(0, 30, 40, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #dae9ef;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,60,80,0.08);
+            border-color: #9ac7d4;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #09424d;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 span {
+            background: #cbe4ed;
+            border-radius: 40px;
+            padding: 0.08rem 0.6rem;
+            font-size: 0.85rem;
+            color: #0b4d5a;
+        }
+
+        .card p {
+            color: #2f4a54;
+            margin-bottom: 0.2rem;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: #58818c;
+            margin-top: 0.8rem;
+            border-left: 3px solid #96c5d2;
+            padding-left: 0.8rem;
+        }
+
+        /* 特色两列 */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.6rem;
+            border: 1px solid #cce3eb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0d4956;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-item p {
+            color: #365a65;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            background: #d4eaf0;
+            color: #085663;
+            border-radius: 50px;
+            padding: 0.1rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 提示区 */
+        .tip-box {
+            background: #e5f2f7;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin: 2rem 0 1.2rem 0;
+            border-left: 8px solid #1f8a9e;
+        }
+
+        .tip-box h3 {
+            font-size: 1.2rem;
+            color: #06424e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tip-box p, .tip-box li {
+            color: #1e4b57;
+        }
+
+        .tip-box ul {
+            padding-left: 1.4rem;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+
+        .tip-box ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* FAQ摘要 */
+        .faq-mini {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid #cee2ea;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.25rem;
+            color: #064753;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2eef3;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: #0c3f4b;
+        }
+
+        .faq-item p {
+            color: #2f5b67;
+            font-size: 0.95rem;
+        }
+
+        /* 链接嵌入句子 */
+        .inline-link {
+            color: #0f7183;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #043d48;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #cbdde6;
+            font-size: 0.9rem;
+            color: #50727e;
+            text-align: center;
+        }
+
+        /* 响应式 */
+        @media (min-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            body {
+                padding: 3rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .feature-row {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .feature-row {
+                grid-template-columns: 1fr;
+            }
+            .faq-mini {
+                padding: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero 摘要区 -->
+    <div class="hero">
+        <h1>乐竞体育 · 运动数据与竞技场景</h1>
+        <p>围绕竞技运动与赛事观察，<a href="https://zho-lejing.com" class="inline-link">乐竞体育</a> 提供了一种结构化的信息聚合方式：从赛事追踪到数据解读，帮助运动爱好者更系统地理解竞技背后的逻辑。</p>
+        <span class="tagline">产品说明 · 知识型视角</span>
+    </div>
+
+    <!-- 卡片网格：亮点 -->
+    <div class="grid">
+        <div class="card">
+            <h3>📊 数据视野 <span>01</span></h3>
+            <p>从比分、统计到趋势归纳，平台将离散的比赛信息转化为可对比的参考维度，降低信息过载的负担。</p>
+            <div class="meta">适用场景 · 多赛事横向比较</div>
+        </div>
+        <div class="card">
+            <h3>🧩 场景匹配 <span>02</span></h3>
+            <p>不同运动项目、不同关注深度，都可以找到对应的内容切面。无论是赛前前瞻还是赛后复盘，信息粒度可选。</p>
+            <div class="meta">典型用法 · 赛事期间快速查阅</div>
+        </div>
+        <div class="card">
+            <h3>⚙️ 克制呈现 <span>03</span></h3>
+            <p>不堆砌冗余元素，信息层级优先。页面结构强调可读性，减少不必要的交互干扰，聚焦内容本身。</p>
+            <div class="meta">设计原则 · 信息服务于判断</div>
+        </div>
+    </div>
+
+    <!-- 使用建议（特点+建议） -->
+    <div class="feature-row">
+        <div class="feature-item">
+            <div class="badge">建议一</div>
+            <h4>赛前信息预热</h4>
+            <p>关注对阵历史、近期状态与场地因素。乐竞体育的列表与筛选能辅助你快速建立背景认知，而非仅看赔率变化。</p>
+        </div>
+        <div class="feature-item">
+            <div class="badge">建议二</div>
+            <h4>赛中实时参照</h4>
+            <p>比赛过程中，通过平台提供的动态数据（如控球率、射门分布）对比实际场面，能更客观评估走势。</p>
+        </div>
+        <div class="feature-item">
+            <div class="badge">建议三</div>
+            <h4>赛后复盘参考</h4>
+            <p>利用统计面板回顾关键节点，理解转折点背后的数据支撑。适合写分析笔记或与同好讨论。</p>
+        </div>
+    </div>
+
+    <!-- 提示 -->
+    <div class="tip-box">
+        <h3>💡 使用提示</h3>
+        <p>信息工具的价值在于辅助独立判断。建议结合多方信息源交叉验证，理性看待任何单一维度的数据。竞技体育的魅力不止于数字。</p>
+        <ul>
+            <li>数据更新存在延迟，关键判定以官方信息为准</li>
+            <li>不同运动项目统计口径可能不同，注意查看说明</li>
+            <li>将 <a href="https://zho-lejing.com" class="inline-link">乐竞体育</a> 视为信息参考渠道之一，而非决策唯一依据</li>
+        </ul>
+    </div>
+
+    <!-- FAQ摘要 -->
+    <div class="faq-mini">
+        <h3>❓ 常见问题摘要</h3>
+        <div class="faq-item">
+            <strong>数据来源是否可靠？</strong>
+            <p>平台整合自公开赛事数据与授权统计，尽力保证准确性，但不对瞬时偏差承担责任。建议以赛事官方记录为最终标准。</p>
+        </div>
+        <div class="faq-item">
+            <strong>移动端体验如何？</strong>
+            <p>页面已做响应式适配，在手机与平板上均可获得清晰布局。卡片结构与字体大小针对小屏幕优化过。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否收费？</strong>
+            <p>基础内容与数据展示保持免费访问。部分高阶统计或历史归档可能在未来提供增值服务，届时会有明确提示。</p>
+        </div>
+    </div>
+
+    <!-- 页脚说明（内嵌链接） -->
+    <div class="footer-note">
+        <p>本文档为产品说明页，旨在介绍 <a href="https://zho-lejing.com" class="inline-link">乐竞体育</a> 的内容方向与实际使用场景。所有信息仅供个人参考，不构成任何形式的建议或承诺。</p>
+        <p style="margin-top: 0.6rem; font-size: 0.8rem;">© 2025 · 知识型说明 · 版本 2.0</p>
+    </div>
+
+</div>
+</body>
+</html>
