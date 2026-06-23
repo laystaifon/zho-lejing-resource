@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 常来的角落</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f3ef;
+            color: #1f2a36;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a {
+            color: #c6532b;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(198, 83, 43, 0.35);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #833e20;
+            border-bottom-color: #833e20;
+        }
+
+        /* 深色主视觉头图 */
+        .hero {
+            background: linear-gradient(145deg, #171e26 0%, #252f3b 100%);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            color: #dfe5ec;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -20%;
+            width: 140%;
+            height: 60px;
+            background: #f4f3ef;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 350;
+            letter-spacing: 2px;
+            color: #f3f0ea;
+            margin-bottom: 0.75rem;
+        }
+        .hero h1 span {
+            font-weight: 500;
+            color: #e6b18a;
+        }
+        .hero p.tagline {
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0.5rem auto 1.8rem;
+            opacity: 0.8;
+            line-height: 1.7;
+            color: #c8d1db;
+        }
+        .hero .mild-btn {
+            display: inline-block;
+            padding: 0.6rem 2.2rem;
+            border: 1px solid rgba(230, 177, 138, 0.5);
+            border-radius: 40px;
+            color: #e6b18a;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            background: transparent;
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+            border-bottom: none;
+        }
+        .hero .mild-btn:hover {
+            background: rgba(230, 177, 138, 0.12);
+            color: #f0d3bb;
+            border-bottom: none;
+        }
+
+        /* 正文浅色区 */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 400;
+            border-left: 5px solid #c6532b;
+            padding-left: 1rem;
+            margin: 2.5rem 0 1.5rem;
+            color: #1f2a36;
+        }
+
+        /* 信息卡片式布局（用途 & 适合人群） */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 1.6rem;
+            box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.15s, box-shadow 0.2s;
+            border: 1px solid #eae7e0;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #27313e;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3f4a57;
+            margin-bottom: 0.4rem;
+        }
+        .card .emoji-deco {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 自然链接段落 & 提示 */
+        .link-note {
+            background: #e9e5dd;
+            padding: 1.6rem 2rem;
+            border-radius: 40px 12px 40px 12px;
+            margin: 2.5rem 0 1.8rem;
+            font-size: 1.05rem;
+            color: #1f2a36;
+        }
+        .link-note strong {
+            font-weight: 550;
+        }
+        .link-note a {
+            font-weight: 500;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1rem;
+            padding: 0.5rem 0;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #2b3744;
+        }
+        .faq-item .a {
+            color: #4a5766;
+            padding-left: 1.2rem;
+            border-left: 2px solid #d9cebe;
+            margin-top: 0.2rem;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #dcd6cc;
+            font-size: 0.85rem;
+            color: #6d7a88;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p.tagline {
+                font-size: 0.95rem;
+            }
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+            .link-note {
+                padding: 1.2rem 1.2rem;
+                border-radius: 24px 8px 24px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>又见面了 · <span>leyu</span></h1>
+        <p class="tagline">一个你或许会想再次打开、收藏在书签夹里的地方。<br>不喧哗，不催促，就在那里，等你需要时再来。</p>
+        <a href="https://m-main-leyu.com" class="mild-btn">leyu</a>
+    </header>
+
+    <main class="container">
+        <!-- 再次访问 / 收藏 角度 -->
+        <section>
+            <h2 class="section-title">那些让你想存下来的瞬间</h2>
+            <p style="margin-bottom: 1rem;">有些网站去过一次就忘了，而另一些，你会下意识地在浏览器收藏栏里给它留一个位置。原因往往很简单：界面干净、信息直接、或者仅仅是某种使用时的顺手感。<a href="https://m-main-leyu.com">leyu</a> 就属于后者——它不刻意刷存在感，但当你需要的时候，总能迅速找到想要的。这也是为什么不少人在手机桌面或书签栏里一直保留着它。</p>
+            <p>人们收藏一个页面，通常不是因为一次惊艳的体验，而是因为多次回来之后，它依然稳定、清晰，没有变成另一个样子。leyu 在这点上做得相当温和：没有频繁的弹窗，没有夸张的跳转，每一次进入都像回到一个熟悉的角落。</p>
+        </section>
+
+        <!-- 用途卡片（信息卡片式） -->
+        <section>
+            <h2 class="section-title">日常里可以怎么用</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <span class="emoji-deco">📑</span>
+                    <h3>快速浏览与查找</h3>
+                    <p>不需要层层菜单，打开就能看到主要分类和入口。无论是想了解某个板块，还是单纯逛一逛，都直截了当。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-deco">🔖</span>
+                    <h3>常驻书签位</h3>
+                    <p>因为结构稳定，放在收藏夹里不会出现链接失效或布局错乱。隔几周再回来，还是那个熟悉的样子。</p>
+                </div>
+                <div class="card">
+                    <span class="emoji-deco">📱</span>
+                    <h3>移动端随手用</h3>
+                    <p>适配做得自然，手机浏览器里缩放、点击都很顺手。等车、排队时打开，不费眼也不费神。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 适合人群 -->
+        <section>
+            <h2 class="section-title">它适合怎样的人</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>习惯固定入口的人</h3>
+                    <p>比起每天推送，你更愿意把几个常用站点放在手边，需要时自己点开。leyu 就是那种不需要提醒、但值得收藏的存在。</p>
+                </div>
+                <div class="card">
+                    <h3>对界面噪音敏感的人</h3>
+                    <p>不喜欢满屏闪烁的按钮和强引导弹窗。这里配色柔和、布局宽松，浏览时几乎没有被打扰的感觉。</p>
+                </div>
+                <div class="card">
+                    <h3>偶尔回来看看的人</h3>
+                    <p>也许不是每天都用，但每隔一段时间就会想起它。对于这类“轻度但持续”的使用者，leyu 的节奏刚刚好。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 自然链接段落（再次强调收藏/持续关注） -->
+        <div class="link-note">
+            <strong>📌 如果你曾经来过，不妨把它再次加入书签。</strong> 很多人都是从“偶然遇到”变成“习惯性打开”的。<br>
+            直接收藏 <a href="https://m-main-leyu.com">leyu</a> 到浏览器书签栏，或者添加到手机桌面 —— 几秒钟的事，却能让下次回来变得更自然。不需要刻意记住网址，也不需要每次搜索。
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <section class="faq-mini">
+            <h2 class="section-title">一些你可能想问的</h2>
+            <div class="faq-item">
+                <div class="q">Q：这个页面会经常变化吗？</div>
+                <div class="a">整体结构和核心功能保持稳定，但内容会逐步调整和补充，所以收藏之后偶尔回来也会发现一些新的东西。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">Q：移动端和电脑上体验一样吗？</div>
+                <div class="a">主要区别在于屏幕宽度，但核心布局和交互逻辑一致。手机浏览器上同样可以快速导航和浏览。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">Q：我需要注册或登录才能用吗？</div>
+                <div class="a">大多数内容直接可见，不需要额外操作。具体根据你访问的板块而定，leyu 一直保持较低的访问门槛。</div>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            持续关注 · 不打扰的陪伴
+        </div>
+    </main>
+</body>
+</html>
